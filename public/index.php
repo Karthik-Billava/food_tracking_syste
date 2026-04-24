@@ -12,7 +12,7 @@ require_once ROOT_DIR . '/views/partials/header.php';
 ?>
 <main>
   <section class="hero">
-    <h1>Hungry? We've got you. 🍕</h1>
+    <h1>Hungry? We've got you. </h1>
     <p>Order from hundreds of restaurants near you with real-time tracking</p>
     <div class="hero-search">
       <input type="text" id="heroSearch" placeholder="Search for restaurants, dishes, cuisines...">
@@ -23,20 +23,20 @@ require_once ROOT_DIR . '/views/partials/header.php';
   <div class="container" style="padding-top:2rem;padding-bottom:4rem">
     <div class="filters" id="filters">
       <span class="filter-chip active" data-filter="">All</span>
-      <span class="filter-chip" data-filter="veg" data-veg="1">🥦 Pure Veg</span>
-      <span class="filter-chip" data-filter="rating">⭐ Top Rated</span>
-      <span class="filter-chip" data-filter="cuisine" data-cuisine="Indian">🍛 Indian</span>
-      <span class="filter-chip" data-filter="cuisine" data-cuisine="Chinese">🍜 Chinese</span>
-      <span class="filter-chip" data-filter="cuisine" data-cuisine="Italian">🍕 Italian</span>
-      <span class="filter-chip" data-filter="cuisine" data-cuisine="Fast Food">🍔 Fast Food</span>
-      <span class="filter-chip" data-filter="cuisine" data-cuisine="Beverages">☕ Beverages</span>
+      <span class="filter-chip" data-filter="veg" data-veg="1"> Pure Veg</span>
+      <span class="filter-chip" data-filter="rating"> Top Rated</span>
+      <span class="filter-chip" data-filter="cuisine" data-cuisine="Indian"> Indian</span>
+      <span class="filter-chip" data-filter="cuisine" data-cuisine="Chinese"> Chinese</span>
+      <span class="filter-chip" data-filter="cuisine" data-cuisine="Italian"> Italian</span>
+      <span class="filter-chip" data-filter="cuisine" data-cuisine="Fast Food"> Fast Food</span>
+      <span class="filter-chip" data-filter="cuisine" data-cuisine="Beverages"> Beverages</span>
     </div>
 
     <h2 class="section-title">Restaurants near you <span id="restCount">(<?= count($restaurants) ?>)</span></h2>
 
     <div id="restaurantGrid" class="grid-4">
       <?php if (empty($restaurants)): ?>
-        <div class="empty"><div class="empty-icon">🍽️</div><h3>No restaurants found</h3></div>
+        <div class="empty"><div class="empty-icon">️</div><h3>No restaurants found</h3></div>
       <?php else: foreach ($restaurants as $r):
         $rating   = number_format((float)($r['avg_rating'] ?? 0), 1);
         $cuisines = array_slice((array)($r['cuisine'] ?? []), 0, 3);
@@ -49,13 +49,13 @@ require_once ROOT_DIR . '/views/partials/header.php';
         <div class="thumb">
           <img src="<?= $img ?>" alt="<?= htmlspecialchars($r['name']) ?>" loading="lazy" onerror="this.src='https://placehold.co/400x250/1a1a2e/e8eaf6?text=Restaurant'">
           <div class="badge-row">
-            <span class="badge <?= $r['is_veg'] ? 'badge-veg' : 'badge-nonveg' ?>"><?= $r['is_veg'] ? '🥦 Veg' : '🍗 Non-Veg' ?></span>
+            <span class="badge <?= $r['is_veg'] ? 'badge-veg' : 'badge-nonveg' ?>"><?= $r['is_veg'] ? ' Veg' : ' Non-Veg' ?></span>
           </div>
         </div>
         <div class="info">
           <h3><?= htmlspecialchars($r['name']) ?></h3>
           <div class="meta">
-            <span class="rating">⭐ <?= $rating ?></span>
+            <span class="rating"> <?= $rating ?></span>
             <span><?= htmlspecialchars($r['city'] ?? '') ?></span>
             <span>₹<?= (int)($r['delivery_fee'] ?? 0) ?> delivery</span>
           </div>
@@ -90,10 +90,10 @@ async function loadRestaurants(filters = {}) {
   grid.innerHTML = skeletonCards();
   const params = new URLSearchParams(filters).toString();
   const data = await apiFetch('restaurant' + (params ? '&' + params : ''));
-  if (!data.success) { grid.innerHTML = '<div class="empty"><div class="empty-icon">😕</div><h3>Failed to load</h3></div>'; return; }
+  if (!data.success) { grid.innerHTML = '<div class="empty"><div class="empty-icon"></div><h3>Failed to load</h3></div>'; return; }
   const rests = data.restaurants || [];
   document.getElementById('restCount').textContent = `(${rests.length})`;
-  if (!rests.length) { grid.innerHTML = '<div class="empty"><div class="empty-icon">🍽️</div><h3>No restaurants found</h3></div>'; return; }
+  if (!rests.length) { grid.innerHTML = '<div class="empty"><div class="empty-icon">️</div><h3>No restaurants found</h3></div>'; return; }
   grid.innerHTML = rests.map(r => restaurantCard(r)).join('');
 }
 
@@ -108,13 +108,13 @@ function restaurantCard(r) {
     <div class="thumb">
       <img src="${img}" alt="${escHtml(r.name)}" loading="lazy" onerror="this.src='https://placehold.co/400x250/1a1a2e/e8eaf6?text=Restaurant'">
       <div class="badge-row">
-        <span class="badge ${r.is_veg?'badge-veg':'badge-nonveg'}">${r.is_veg?'🥦 Veg':'🍗 Non-Veg'}</span>
+        <span class="badge ${r.is_veg?'badge-veg':'badge-nonveg'}">${r.is_veg?' Veg':' Non-Veg'}</span>
       </div>
     </div>
     <div class="info">
       <h3>${escHtml(r.name)}</h3>
       <div class="meta">
-        <span class="rating">⭐ ${rating}</span>
+        <span class="rating"> ${rating}</span>
         <span>${escHtml(r.city||'')}</span>
         <span>₹${r.delivery_fee||0} delivery</span>
       </div>

@@ -9,17 +9,17 @@ require_once ROOT_DIR . '/views/partials/header.php';
 ?>
 <main>
 <div class="container" style="padding:2rem 0 4rem">
-  <div class="page-header"><h1>⚙️ Admin Dashboard</h1></div>
+  <div class="page-header"><h1>️ Admin Dashboard</h1></div>
 
   <!-- Stats -->
   <div class="dashboard-grid" id="statsRow"><div class="spinner"></div></div>
 
   <!-- Tabs -->
   <div class="tabs" style="margin-top:1.5rem">
-    <div class="tab active" id="tab-overview"  onclick="showTab('overview')">📊 Overview</div>
-    <div class="tab" id="tab-orders"    onclick="showTab('orders')">📦 Orders</div>
-    <div class="tab" id="tab-users"     onclick="showTab('users')">👥 Users</div>
-    <div class="tab" id="tab-rests"     onclick="showTab('rests')">🏪 Restaurants</div>
+    <div class="tab active" id="tab-overview"  onclick="showTab('overview')"> Overview</div>
+    <div class="tab" id="tab-orders"    onclick="showTab('orders')"> Orders</div>
+    <div class="tab" id="tab-users"     onclick="showTab('users')"> Users</div>
+    <div class="tab" id="tab-rests"     onclick="showTab('rests')"> Restaurants</div>
   </div>
 
   <div id="pane-overview"><div class="spinner"></div></div>
@@ -38,13 +38,13 @@ async function loadAnalytics() {
   analytics = data.analytics;
 
   document.getElementById('statsRow').innerHTML = `
-    <div class="stat-card red"><div class="stat-icon">👥</div><div class="stat-val">${analytics.total_users}</div><div class="stat-label">Users</div></div>
-    <div class="stat-card orange"><div class="stat-icon">🏪</div><div class="stat-val">${analytics.total_restaurants}</div><div class="stat-label">Restaurants</div></div>
-    <div class="stat-card green"><div class="stat-icon">📦</div><div class="stat-val">${analytics.total_orders}</div><div class="stat-label">Total Orders</div></div>
-    <div class="stat-card blue"><div class="stat-icon">🛵</div><div class="stat-val">${analytics.delivery_queue_len}</div><div class="stat-label">Queue Length</div></div>
+    <div class="stat-card red"><div class="stat-icon"></div><div class="stat-val">${analytics.total_users}</div><div class="stat-label">Users</div></div>
+    <div class="stat-card orange"><div class="stat-icon"></div><div class="stat-val">${analytics.total_restaurants}</div><div class="stat-label">Restaurants</div></div>
+    <div class="stat-card green"><div class="stat-icon"></div><div class="stat-val">${analytics.total_orders}</div><div class="stat-label">Total Orders</div></div>
+    <div class="stat-card blue"><div class="stat-icon"></div><div class="stat-val">${analytics.delivery_queue_len}</div><div class="stat-label">Queue Length</div></div>
     <div class="stat-card green"><div class="stat-icon">🟢</div><div class="stat-val">${analytics.online_restaurants}</div><div class="stat-label">Online Now</div></div>
-    <div class="stat-card orange"><div class="stat-icon">⚡</div><div class="stat-val">${(analytics.active_orders||[]).length}</div><div class="stat-label">Active (Redis)</div></div>
-    <div class="stat-card blue"><div class="stat-icon">⏱</div><div class="stat-val">${analytics.avg_delivery_time}m</div><div class="stat-label">Avg Delivery</div></div>`;
+    <div class="stat-card orange"><div class="stat-icon"></div><div class="stat-val">${(analytics.active_orders||[]).length}</div><div class="stat-label">Active (Redis)</div></div>
+    <div class="stat-card blue"><div class="stat-icon"></div><div class="stat-val">${analytics.avg_delivery_time}m</div><div class="stat-label">Avg Delivery</div></div>`;
 
   renderOverview();
 }
@@ -55,7 +55,7 @@ function renderOverview() {
   document.getElementById('pane-overview').innerHTML = `
     <div class="grid-2" style="margin-top:1rem">
       <div class="card card-body">
-        <h3 class="section-title" style="font-size:1rem;margin-bottom:1rem">📊 Orders by Status</h3>
+        <h3 class="section-title" style="font-size:1rem;margin-bottom:1rem"> Orders by Status</h3>
         ${Object.entries(byStatus).map(([s,n]) => `
           <div style="display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--border)">
             <span class="status-badge status-${s}">${statusLabel(s)}</span>
@@ -63,7 +63,7 @@ function renderOverview() {
           </div>`).join('')}
       </div>
       <div class="card card-body">
-        <h3 class="section-title" style="font-size:1rem;margin-bottom:1rem">🔥 Most Ordered Items</h3>
+        <h3 class="section-title" style="font-size:1rem;margin-bottom:1rem"> Most Ordered Items</h3>
         ${(analytics.most_ordered_items||[]).slice(0,8).map((item,i) => `
           <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--border)">
             <span style="font-size:.875rem">${i+1}. ${escHtml(item.name||'')}</span>
@@ -73,7 +73,7 @@ function renderOverview() {
     </div>
 
     <div class="card card-body" style="margin-top:1.5rem">
-      <h3 class="section-title" style="font-size:1rem;margin-bottom:1rem">💰 Revenue by Restaurant</h3>
+      <h3 class="section-title" style="font-size:1rem;margin-bottom:1rem"> Revenue by Restaurant</h3>
       <table class="dash-table">
         <thead><tr><th>Restaurant</th><th>Total Orders</th><th>Total Revenue</th><th>Avg Rating</th></tr></thead>
         <tbody>
@@ -82,14 +82,14 @@ function renderOverview() {
               <td><strong>${escHtml(r.name||r._id||'')}</strong></td>
               <td>${r.total_orders||0}</td>
               <td style="color:var(--success);font-weight:700">₹${Number(r.total_revenue||0).toLocaleString()}</td>
-              <td><span class="badge" style="background:#00b894;color:#fff">⭐ ${Number(r.avg_rating||0).toFixed(1)}</span></td>
+              <td><span class="badge" style="background:#00b894;color:#fff"> ${Number(r.avg_rating||0).toFixed(1)}</span></td>
             </tr>`).join('')}
         </tbody>
       </table>
     </div>
 
     <div class="card card-body" style="margin-top:1.5rem">
-      <h3 class="section-title" style="font-size:1rem;margin-bottom:1rem">⚡ Active Orders (Redis)</h3>
+      <h3 class="section-title" style="font-size:1rem;margin-bottom:1rem"> Active Orders (Redis)</h3>
       ${!(analytics.active_orders||[]).length ? '<p class="text-muted text-sm">No active orders in Redis</p>' :
         `<table class="dash-table"><thead><tr><th>Order ID</th><th>Status</th><th>User</th><th>Restaurant</th><th>ETA</th></tr></thead><tbody>
           ${(analytics.active_orders||[]).map(o=>`<tr>
@@ -126,7 +126,7 @@ async function loadRestsTab() {
           <td class="text-muted text-sm">${(r.cuisine||[]).join(', ')}</td>
           <td>${r.total_orders||0}</td>
           <td style="color:var(--success)">₹${Number(r.total_revenue||0).toLocaleString()}</td>
-          <td>⭐ ${Number(r.avg_rating||0).toFixed(1)}</td>
+          <td> ${Number(r.avg_rating||0).toFixed(1)}</td>
         </tr>`).join('')}
       </tbody>
     </table>
@@ -138,8 +138,8 @@ async function loadOrdersTab() {
     <div class="card card-body" style="margin-top:1rem">
       <p class="text-muted text-sm">Real-time order data shown in the Overview tab. Full order list available here.</p>
       <div style="margin-top:.75rem;display:flex;gap:.75rem">
-        <button class="btn btn-outline btn-sm" onclick="assignDelivery()">🛵 Assign Next Delivery</button>
-        <button class="btn btn-ghost btn-sm" onclick="loadAnalytics()">🔄 Refresh</button>
+        <button class="btn btn-outline btn-sm" onclick="assignDelivery()"> Assign Next Delivery</button>
+        <button class="btn btn-ghost btn-sm" onclick="loadAnalytics()"> Refresh</button>
       </div>
       <div id="assignResult" style="margin-top:1rem"></div>
     </div>`;

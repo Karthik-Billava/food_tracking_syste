@@ -53,44 +53,44 @@ require_once ROOT_DIR . '/views/partials/header.php';
       alt="Cover"
       style="width:100%;height:100%;object-fit:cover;display:<?= !empty($restaurant['image']) ? 'block' : 'none' ?>">
     <div id="coverPlaceholder" style="display:<?= !empty($restaurant['image']) ? 'none' : 'flex' ?>;align-items:center;justify-content:center;height:100%;flex-direction:column;gap:.5rem;color:var(--text-muted)">
-      <span style="font-size:3rem">🏪</span><span style="font-size:.9rem">No cover photo yet</span>
+      <span style="font-size:3rem"></span><span style="font-size:.9rem">No cover photo yet</span>
     </div>
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 55%)"></div>
     <div style="position:absolute;bottom:1rem;left:1.25rem;right:8rem">
-      <h1 style="margin:0;font-size:1.6rem;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)">🏪 <?= htmlspecialchars($restaurant['name']) ?></h1>
+      <h1 style="margin:0;font-size:1.6rem;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)"> <?= htmlspecialchars($restaurant['name']) ?></h1>
       <p style="margin:.2rem 0 0;font-size:.85rem;color:rgba(255,255,255,.8)">Restaurant Dashboard · <span style="color:#4caf50">🟢 Online</span></p>
     </div>
     <label for="coverInput" style="position:absolute;bottom:1rem;right:1rem;cursor:pointer">
-      <span class="btn btn-outline btn-sm" style="background:rgba(0,0,0,.55);border-color:rgba(255,255,255,.3);color:#fff;backdrop-filter:blur(4px)">📷 Change Photo</span>
+      <span class="btn btn-outline btn-sm" style="background:rgba(0,0,0,.55);border-color:rgba(255,255,255,.3);color:#fff;backdrop-filter:blur(4px)"> Change Photo</span>
       <input type="file" id="coverInput" accept="image/*" style="display:none" onchange="uploadCover(event)">
     </label>
   </div>
 
   <!-- Action buttons -->
   <div style="display:flex;gap:.75rem;margin-bottom:1.5rem;flex-wrap:wrap">
-    <button class="btn btn-outline btn-sm" onclick="showTab('orders')">📦 Orders</button>
-    <button class="btn btn-outline btn-sm" onclick="showTab('menu')">🍽 Menu</button>
+    <button class="btn btn-outline btn-sm" onclick="showTab('orders')"> Orders</button>
+    <button class="btn btn-outline btn-sm" onclick="showTab('menu')"> Menu</button>
     <button class="btn btn-primary btn-sm" onclick="openAddItem()">+ Add Item</button>
   </div>
 
   <!-- Stats -->
   <div class="dashboard-grid" style="margin-bottom:2rem">
-    <div class="stat-card red"><div class="stat-icon">📦</div><div class="stat-val"><?= (int)($restaurant['total_orders']??0) ?></div><div class="stat-label">Total Orders</div></div>
-    <div class="stat-card orange"><div class="stat-icon">💰</div><div class="stat-val">₹<?= number_format((float)($restaurant['total_revenue']??0)) ?></div><div class="stat-label">Total Revenue</div></div>
-    <div class="stat-card green"><div class="stat-icon">⭐</div><div class="stat-val"><?= number_format((float)($restaurant['avg_rating']??0),1) ?></div><div class="stat-label">Avg Rating</div></div>
-    <div class="stat-card blue"><div class="stat-icon">🍽️</div><div class="stat-val"><?= count($restaurant['menu_items']??[]) ?></div><div class="stat-label">Menu Items</div></div>
+    <div class="stat-card red"><div class="stat-icon"></div><div class="stat-val"><?= (int)($restaurant['total_orders']??0) ?></div><div class="stat-label">Total Orders</div></div>
+    <div class="stat-card orange"><div class="stat-icon"></div><div class="stat-val">₹<?= number_format((float)($restaurant['total_revenue']??0)) ?></div><div class="stat-label">Total Revenue</div></div>
+    <div class="stat-card green"><div class="stat-icon"></div><div class="stat-val"><?= number_format((float)($restaurant['avg_rating']??0),1) ?></div><div class="stat-label">Avg Rating</div></div>
+    <div class="stat-card blue"><div class="stat-icon">️</div><div class="stat-val"><?= count($restaurant['menu_items']??[]) ?></div><div class="stat-label">Menu Items</div></div>
   </div>
 
   <!-- Tabs -->
   <div class="tabs">
-    <div class="tab active" id="tab-orders" onclick="showTab('orders')">📦 Incoming Orders</div>
-    <div class="tab" id="tab-menu" onclick="showTab('menu')">🍽️ Menu Management</div>
+    <div class="tab active" id="tab-orders" onclick="showTab('orders')"> Incoming Orders</div>
+    <div class="tab" id="tab-menu" onclick="showTab('menu')">️ Menu Management</div>
   </div>
 
   <!-- Orders Tab (SSR) -->
   <div id="pane-orders">
     <?php if (empty($orders)): ?>
-      <div class="empty"><div class="empty-icon">📭</div><h3>No orders yet</h3></div>
+      <div class="empty"><div class="empty-icon"></div><h3>No orders yet</h3></div>
     <?php else: ?>
       <table class="dash-table">
         <thead><tr><th>Order ID</th><th>Items</th><th>Total</th><th>Status</th><th>Time</th><th>Action</th></tr></thead>
@@ -125,9 +125,9 @@ require_once ROOT_DIR . '/views/partials/header.php';
   <!-- Menu Tab (SSR) -->
   <div id="pane-menu" style="display:none">
     <?php if (empty($menuGroups)): ?>
-      <div class="empty"><div class="empty-icon">🍽️</div><h3>No items yet. Add your first!</h3></div>
+      <div class="empty"><div class="empty-icon">️</div><h3>No items yet. Add your first!</h3></div>
     <?php else:
-      $typeIcons  = ['veg' => '🥦', 'non_veg' => '🍗', 'beverage' => '☕'];
+      $typeIcons  = ['veg' => '', 'non_veg' => '', 'beverage' => ''];
       $typeLabels = ['veg' => 'Vegetarian', 'non_veg' => 'Non-Vegetarian', 'beverage' => 'Beverages'];
       foreach ($menuGroups as $type => $items):
     ?>
@@ -149,13 +149,13 @@ require_once ROOT_DIR . '/views/partials/header.php';
               <?php if (!empty($item['image_url'])): ?>
                 <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="" style="width:40px;height:40px;object-fit:cover;border-radius:6px;display:block;margin:0 auto">
               <?php else: ?>
-                <span style="color:var(--text-muted);font-size:1.2rem">🍽️</span>
+                <span style="color:var(--text-muted);font-size:1.2rem">️</span>
               <?php endif; ?>
             </td>
             <td style="vertical-align:middle"><?= htmlspecialchars($item['name']) ?></td>
             <td style="white-space:nowrap;vertical-align:middle">₹<?= number_format((float)$item['price'], 2) ?></td>
             <td class="text-muted text-sm" style="white-space:nowrap;vertical-align:middle"><?= $extra ?></td>
-            <td style="text-align:center;vertical-align:middle"><span style="color:<?= $avail ? 'var(--success)' : 'var(--danger)' ?>"><?= $avail ? '✓' : '✗' ?></span></td>
+            <td style="text-align:center;vertical-align:middle"><span style="color:<?= $avail ? 'var(--success)' : 'var(--danger)' ?>"><?= $avail ? '' : '' ?></span></td>
             <td style="white-space:nowrap;vertical-align:middle">
               <button class="btn btn-ghost btn-sm" onclick='editItem(<?= $itemJsonAttr ?>)'>Edit</button>
               <button class="btn btn-sm" style="background:rgba(226,55,68,.15);color:var(--danger);margin-left:.35rem" onclick="deleteItem('<?= htmlspecialchars($item['_id']) ?>')">Delete</button>
@@ -174,7 +174,7 @@ require_once ROOT_DIR . '/views/partials/header.php';
   <div class="modal">
     <div class="modal-header">
       <h3 id="modalTitle">Add Menu Item</h3>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-close" onclick="closeModal()"></button>
     </div>
     <form id="itemForm" onsubmit="submitItem(event)">
       <input type="hidden" id="itemId">
@@ -183,19 +183,19 @@ require_once ROOT_DIR . '/views/partials/header.php';
       <div class="form-group">
         <label>Type</label>
         <select id="iType" onchange="updateTypeFields()">
-          <option value="veg">🥦 Vegetarian</option>
-          <option value="non_veg">🍗 Non-Vegetarian</option>
-          <option value="beverage">☕ Beverage</option>
+          <option value="veg"> Vegetarian</option>
+          <option value="non_veg"> Non-Vegetarian</option>
+          <option value="beverage"> Beverage</option>
         </select>
       </div>
       <div id="vegFields"><div class="form-group" style="display:flex;align-items:center;gap:.5rem"><input type="checkbox" id="iJain" style="width:auto;margin:0"><label for="iJain" style="margin:0;cursor:pointer">Jain friendly</label></div></div>
-      <div id="nonvegFields" style="display:none"><div class="form-group"><label>Spice Level</label><select id="iSpice"><option value="low">🌶 Low</option><option value="medium" selected>🌶🌶 Medium</option><option value="high">🌶🌶🌶 High</option></select></div></div>
+      <div id="nonvegFields" style="display:none"><div class="form-group"><label>Spice Level</label><select id="iSpice"><option value="low"> Low</option><option value="medium" selected> Medium</option><option value="high"> High</option></select></div></div>
       <div id="bevFields" style="display:none"><div class="form-group"><label>Serving Size (ml)</label><input type="number" id="iServing" value="250" min="1"></div></div>
       <div class="form-group">
         <label>Item Image (optional, max 5 MB)</label>
         <div id="imgUploadArea" style="border:2px dashed var(--border);border-radius:10px;padding:1rem;text-align:center;cursor:pointer" onclick="document.getElementById('iImage').click()" ondragover="event.preventDefault()" ondrop="handleImgDrop(event)">
           <img id="imgPreview" src="" alt="" style="max-width:100%;max-height:140px;border-radius:8px;display:none;margin-bottom:.5rem">
-          <div id="imgPlaceholder" style="color:var(--text-muted);font-size:.9rem">📷 Click or drag &amp; drop image here</div>
+          <div id="imgPlaceholder" style="color:var(--text-muted);font-size:.9rem"> Click or drag &amp; drop image here</div>
           <input type="file" id="iImage" accept="image/*" style="display:none" onchange="previewImg(event)">
         </div>
         <input type="hidden" id="iImageUrl" value="">

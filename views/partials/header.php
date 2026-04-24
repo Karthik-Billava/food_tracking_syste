@@ -31,13 +31,13 @@ $role = $currentUser['role'] ?? '';
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
 <link rel="stylesheet" href="/food_tracking_system/public/assets/css/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
 </head>
 <body>
 <nav class="navbar">
-  <a class="brand" href="/food_tracking_system/public/index.php">🍔 <?= APP_NAME ?></a>
+  <a class="brand" href="/food_tracking_system/public/index.php"> <?= APP_NAME ?></a>
   <div class="nav-search">
-    <span class="icon">🔍</span>
+    <span class="icon"></span>
     <input type="text" id="globalSearch" placeholder="Search restaurants, dishes..." autocomplete="off">
   </div>
   <div class="nav-links" id="navLinks">
@@ -51,24 +51,24 @@ $role = $currentUser['role'] ?? '';
       <a href="/food_tracking_system/public/admin.php">Admin</a>
       <a href="/food_tracking_system/public/logout.php">Logout</a>
     <?php else: ?>
-      <a href="/food_tracking_system/public/profile.php">👤 <?= htmlspecialchars($currentUser['name']) ?></a>
+      <a href="/food_tracking_system/public/profile.php"> <?= htmlspecialchars($currentUser['name']) ?></a>
       <a href="/food_tracking_system/public/orders.php">My Orders</a>
       <button class="cart-icon" id="cartBtn">
-        🛒 Cart
+         Cart
         <span class="cart-badge" id="cartBadge" style="display:none">0</span>
       </button>
       <a href="/food_tracking_system/public/logout.php">Logout</a>
     <?php endif; ?>
   </div>
-  <button class="nav-toggle" id="navToggle">☰</button>
+  <button class="nav-toggle" id="navToggle"></button>
 </nav>
 
 <!-- Cart Sidebar -->
 <div class="cart-overlay" id="cartOverlay"></div>
 <aside class="cart-sidebar" id="cartSidebar">
   <div class="cart-header">
-    <h3>🛒 Your Cart</h3>
-    <button class="cart-close" id="cartClose">✕</button>
+    <h3> Your Cart</h3>
+    <button class="cart-close" id="cartClose"></button>
   </div>
   <div class="cart-items" id="cartItems"></div>
   <div class="cart-footer" id="cartFooter"></div>

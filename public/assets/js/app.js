@@ -61,7 +61,7 @@ function renderCart() {
   if (!body) return;
 
   if (!cart.items.length) {
-    body.innerHTML = '<div class="empty"><div class="empty-icon">🛒</div><h3>Cart is empty</h3></div>';
+    body.innerHTML = '<div class="empty"><div class="empty-icon"></div><h3>Cart is empty</h3></div>';
     if (foot) foot.innerHTML = '';
     return;
   }
@@ -129,7 +129,7 @@ function showToast(msg, type = 'info', duration = 3000) {
   if (!tc) { tc = document.createElement('div'); tc.id = 'toastContainer'; tc.className = 'toast-container'; document.body.appendChild(tc); }
   const t = document.createElement('div');
   t.className = `toast toast-${type}`;
-  const icons = { success: '✓', error: '✕', info: 'ℹ' };
+  const icons = { success: '', error: '', info: 'ℹ' };
   t.innerHTML = `<span>${icons[type] || 'ℹ'}</span><span>${escHtml(msg)}</span>`;
   tc.appendChild(t);
   setTimeout(() => { t.style.animation = 'fadeOut .3s ease forwards'; setTimeout(() => t.remove(), 300); }, duration);

@@ -15,12 +15,12 @@ require_once ROOT_DIR . '/views/partials/header.php';
 ?>
 <main>
 <div class="container" style="padding:2rem 1.5rem;max-width:800px">
-  <h1 class="section-title">🧾 Checkout</h1>
+  <h1 class="section-title"> Checkout</h1>
   <div class="grid-2" style="align-items:start">
     <!-- Address -->
     <div>
       <div class="card card-body" style="margin-bottom:1rem">
-        <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem">📍 Delivery Address</h3>
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem"> Delivery Address</h3>
         <?php if ($addresses): ?>
           <?php foreach ($addresses as $i => $addr): ?>
             <label style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;margin-bottom:.5rem;transition:var(--transition)" class="addr-opt">
@@ -49,14 +49,14 @@ require_once ROOT_DIR . '/views/partials/header.php';
       </div>
 
       <div class="card card-body">
-        <h3 style="font-size:1rem;font-weight:700;margin-bottom:.75rem">📝 Order Notes</h3>
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:.75rem"> Order Notes</h3>
         <textarea id="orderNotes" rows="2" style="width:100%;background:var(--dark-2);border:1.5px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);resize:vertical" placeholder="Any special instructions..."></textarea>
       </div>
     </div>
 
     <!-- Order summary -->
     <div class="card card-body" id="orderSummary">
-      <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem">🛒 Order Summary</h3>
+      <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem"> Order Summary</h3>
       <div id="summaryItems"></div>
       <div style="border-top:1px solid var(--border);margin-top:1rem;padding-top:1rem">
         <div style="display:flex;justify-content:space-between;margin-bottom:.4rem;font-size:.875rem"><span style="color:var(--text-muted)">Subtotal</span><span id="subtotal"></span></div>

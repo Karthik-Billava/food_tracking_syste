@@ -32,11 +32,11 @@ function timeAgoPhp(string $iso): string {
 ?>
 <main>
 <div class="container" style="padding:2rem 0 4rem">
-  <div class="page-header"><h1>📦 My Orders</h1></div>
+  <div class="page-header"><h1> My Orders</h1></div>
 
   <?php if (empty($orders)): ?>
     <div class="empty">
-      <div class="empty-icon">📭</div>
+      <div class="empty-icon"></div>
       <h3>No orders yet</h3>
       <p>Start ordering from your favourite restaurants!</p>
       <a href="/food_tracking_system/public/index.php" class="btn btn-primary" style="margin-top:1rem">Browse Restaurants</a>

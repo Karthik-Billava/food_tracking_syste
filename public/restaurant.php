@@ -50,17 +50,17 @@ require_once ROOT_DIR . '/views/partials/header.php';
   <img src="<?= htmlspecialchars($img) ?>" alt="<?= htmlspecialchars($restaurant['name']) ?>" onerror="this.src='https://placehold.co/1200x400/16213e/e8eaf6?text=<?= urlencode($restaurant['name']) ?>'">
   <div class="overlay">
     <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem">
-      <span class="badge <?= $restaurant['is_veg'] ? 'badge-veg' : 'badge-nonveg' ?>"><?= $restaurant['is_veg'] ? '🥦 Pure Veg' : '🍗 Non-Veg' ?></span>
+      <span class="badge <?= $restaurant['is_veg'] ? 'badge-veg' : 'badge-nonveg' ?>"><?= $restaurant['is_veg'] ? ' Pure Veg' : ' Non-Veg' ?></span>
       <?php if ($restCtrl->isOnline($id)): ?>
         <span class="badge" style="background:rgba(0,184,148,.8);color:#fff">🟢 Open</span>
       <?php endif; ?>
     </div>
     <h1><?= htmlspecialchars($restaurant['name']) ?></h1>
     <div style="display:flex;gap:1.5rem;margin-top:.4rem;font-size:.875rem;color:rgba(255,255,255,.8)">
-      <span>⭐ <?= number_format((float)($restaurant['avg_rating']??0),1) ?> rating</span>
-      <span>📍 <?= htmlspecialchars($restaurant['city']??'') ?></span>
-      <span>🛵 ₹<?= $restaurant['delivery_fee']??30 ?> delivery</span>
-      <span>⏱ 30–40 mins</span>
+      <span> <?= number_format((float)($restaurant['avg_rating']??0),1) ?> rating</span>
+      <span> <?= htmlspecialchars($restaurant['city']??'') ?></span>
+      <span> ₹<?= $restaurant['delivery_fee']??30 ?> delivery</span>
+      <span> 30–40 mins</span>
     </div>
   </div>
 </div>
@@ -72,11 +72,11 @@ require_once ROOT_DIR . '/views/partials/header.php';
       <h3>Categories</h3>
       <div id="catLinks">
         <?php
-        $typeIcons  = ['veg' => '🥦', 'non_veg' => '🍗', 'beverage' => '☕'];
+        $typeIcons  = ['veg' => '', 'non_veg' => '', 'beverage' => ''];
         $typeLabels = ['veg' => 'Vegetarian', 'non_veg' => 'Non-Vegetarian', 'beverage' => 'Beverages'];
         foreach (array_keys($menuGroups) as $type):
             $label = $typeLabels[$type] ?? $type;
-            $icon  = $typeIcons[$type]  ?? '🍽️';
+            $icon  = $typeIcons[$type]  ?? '️';
         ?>
           <a class="cat-link" href="#cat-<?= htmlspecialchars($type) ?>"><?= $icon . ' ' . htmlspecialchars($label) ?></a>
         <?php endforeach; ?>
@@ -86,14 +86,14 @@ require_once ROOT_DIR . '/views/partials/header.php';
     <!-- Menu items -->
     <section id="menuContent">
       <?php if (empty($menuGroups)): ?>
-        <div class="empty"><div class="empty-icon">🍽️</div><h3>Menu coming soon</h3></div>
+        <div class="empty"><div class="empty-icon">️</div><h3>Menu coming soon</h3></div>
       <?php else: ?>
         <?php
-        $typeIcons  = ['veg' => '🥦', 'non_veg' => '🍗', 'beverage' => '☕'];
+        $typeIcons  = ['veg' => '', 'non_veg' => '', 'beverage' => ''];
         $typeLabels = ['veg' => 'Vegetarian', 'non_veg' => 'Non-Vegetarian', 'beverage' => 'Beverages'];
         foreach ($menuGroups as $type => $items):
             $label = $typeLabels[$type] ?? $type;
-            $icon  = $typeIcons[$type]  ?? '🍽️';
+            $icon  = $typeIcons[$type]  ?? '️';
         ?>
         <div class="menu-section" id="cat-<?= htmlspecialchars($type) ?>">
           <h2><?= $icon . ' ' . htmlspecialchars($label) ?></h2>
@@ -106,7 +106,7 @@ require_once ROOT_DIR . '/views/partials/header.php';
                 $extraBadge = '<span class="badge badge-jain">Jain</span>';
             } elseif ($type === 'non_veg') {
                 $sl = htmlspecialchars($item['spice_level'] ?? 'medium');
-                $extraBadge = "<span class=\"badge\" style=\"background:rgba(226,55,68,.15);color:var(--danger);font-size:.7rem\">🌶 {$sl}</span>";
+                $extraBadge = "<span class=\"badge\" style=\"background:rgba(226,55,68,.15);color:var(--danger);font-size:.7rem\"> {$sl}</span>";
             } elseif ($type === 'beverage') {
                 $ml = (int)($item['serving_size_ml'] ?? 250);
                 $extraBadge = "<span class=\"text-muted text-sm\">{$ml}ml</span>";
@@ -143,7 +143,7 @@ require_once ROOT_DIR . '/views/partials/header.php';
 <!-- Review section -->
 <div class="container" style="padding-bottom:3rem">
   <div class="card card-body" style="max-width:700px">
-    <h2 class="section-title" style="margin-bottom:1rem">⭐ Reviews</h2>
+    <h2 class="section-title" style="margin-bottom:1rem"> Reviews</h2>
     <div id="reviewsList">
       <?php if (empty($reviews)): ?>
         <p class="text-muted text-sm">No reviews yet. Be the first!</p>
@@ -151,7 +151,7 @@ require_once ROOT_DIR . '/views/partials/header.php';
         <div style="padding:.75rem 0;border-bottom:1px solid var(--border)">
           <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem">
             <strong style="font-size:.9rem"><?= htmlspecialchars($r['user_name'] ?? 'Anonymous') ?></strong>
-            <span style="color:var(--warning)"><?= str_repeat('⭐', min(5, (int)round($r['rating'] ?? 5))) ?></span>
+            <span style="color:var(--warning)"><?= str_repeat('', min(5, (int)round($r['rating'] ?? 5))) ?></span>
             <span class="text-muted text-sm"><?= timeAgoPhpR($r['created_at'] ?? '') ?></span>
           </div>
           <p style="font-size:.875rem;color:var(--text-muted)"><?= htmlspecialchars($r['comment'] ?? '') ?></p>
@@ -164,11 +164,11 @@ require_once ROOT_DIR . '/views/partials/header.php';
       <div class="form-group">
         <label>Rating</label>
         <select id="reviewRating">
-          <option value="5">⭐⭐⭐⭐⭐ (5)</option>
-          <option value="4">⭐⭐⭐⭐ (4)</option>
-          <option value="3">⭐⭐⭐ (3)</option>
-          <option value="2">⭐⭐ (2)</option>
-          <option value="1">⭐ (1)</option>
+          <option value="5"> (5)</option>
+          <option value="4"> (4)</option>
+          <option value="3"> (3)</option>
+          <option value="2"> (2)</option>
+          <option value="1"> (1)</option>
         </select>
       </div>
       <div class="form-group">
@@ -236,7 +236,7 @@ async function loadReviews() {
       <div style="padding:.75rem 0;border-bottom:1px solid var(--border)">
         <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem">
           <strong style="font-size:.9rem">${escHtml(r.user_name||'Anonymous')}</strong>
-          <span style="color:var(--warning)">${'⭐'.repeat(Math.round(r.rating||5))}</span>
+          <span style="color:var(--warning)">${''.repeat(Math.round(r.rating||5))}</span>
           <span class="text-muted text-sm">${timeAgo(r.created_at)}</span>
         </div>
         <p style="font-size:.875rem;color:var(--text-muted)">${escHtml(r.comment||'')}</p>

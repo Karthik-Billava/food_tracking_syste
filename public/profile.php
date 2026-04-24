@@ -25,7 +25,7 @@ require_once ROOT_DIR . '/views/partials/header.php';
 ?>
 <main>
 <div class="container" style="padding:2rem 0 4rem;max-width:800px">
-  <div class="page-header"><h1>👤 My Profile</h1></div>
+  <div class="page-header"><h1> My Profile</h1></div>
   <?php if ($msg): ?><div style="background:rgba(0,184,148,.15);color:#00b894;padding:.75rem 1rem;border-radius:8px;margin-bottom:1rem"><?= htmlspecialchars($msg) ?></div><?php endif; ?>
 
   <div class="grid-2" style="align-items:start">
@@ -44,13 +44,13 @@ require_once ROOT_DIR . '/views/partials/header.php';
     <!-- Addresses -->
     <div>
       <div class="card card-body" style="margin-bottom:1rem">
-        <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem">📍 Saved Addresses</h3>
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem"> Saved Addresses</h3>
         <?php if (!empty($profile['addresses'])): ?>
           <?php foreach ($profile['addresses'] as $addr): ?>
             <div style="padding:.75rem;background:var(--dark-2);border-radius:8px;margin-bottom:.5rem;position:relative">
               <div style="font-weight:600;font-size:.875rem"><?= htmlspecialchars($addr['street']??'') ?></div>
               <div style="font-size:.8rem;color:var(--text-muted)"><?= htmlspecialchars(($addr['city']??'').', '.($addr['pincode']??'')) ?></div>
-              <button onclick="deleteAddress('<?= $addr['_id'] ?>')" style="position:absolute;top:.5rem;right:.5rem;background:none;border:none;color:var(--danger);cursor:pointer;font-size:.8rem">✕</button>
+              <button onclick="deleteAddress('<?= $addr['_id'] ?>')" style="position:absolute;top:.5rem;right:.5rem;background:none;border:none;color:var(--danger);cursor:pointer;font-size:.8rem"></button>
             </div>
           <?php endforeach; ?>
         <?php else: ?>

@@ -1,4 +1,4 @@
-# 🍔 FoodRush — Food Delivery Platform
+#  FoodRush — Food Delivery Platform
 
 A production-style, full-stack food delivery web application built with **PHP 8.1**, **MongoDB**, and **Redis** — inspired by Zomato / Swiggy.
 
@@ -6,7 +6,7 @@ A production-style, full-stack food delivery web application built with **PHP 8.
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Tech Stack](#-tech-stack)
 - [Prerequisites](#-prerequisites)
@@ -23,7 +23,7 @@ A production-style, full-stack food delivery web application built with **PHP 8.
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -37,7 +37,7 @@ A production-style, full-stack food delivery web application built with **PHP 8.
 
 ---
 
-## ✅ Prerequisites
+##  Prerequisites
 
 Install these before continuing:
 
@@ -51,7 +51,7 @@ Install these before continuing:
 
 ---
 
-## 🚀 Installation
+##  Installation
 
 ### Step 1 — Clone / Place the project
 
@@ -124,11 +124,11 @@ php seed.php
 
 Expected output:
 ```
-✅ Dropped existing collections
-✅ Created 3 users
-✅ Created 5 restaurants with menu items
-✅ Created sample orders
-🎉 Seeding complete!
+ Dropped existing collections
+ Created 3 users
+ Created 5 restaurants with menu items
+ Created sample orders
+ Seeding complete!
 ```
 
 ### Step 6 — Open the App
@@ -141,7 +141,7 @@ http://localhost/food_tracking_system/public/
 
 ---
 
-## 🔑 Test Credentials
+##  Test Credentials
 
 After running `seed.php`:
 
@@ -153,7 +153,7 @@ After running `seed.php`:
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 food_tracking_system/
@@ -208,7 +208,7 @@ food_tracking_system/
 
 ---
 
-## 🔌 API Reference
+##  API Reference
 
 All requests go to:
 ```
@@ -274,7 +274,7 @@ http://localhost/food_tracking_system/public/api.php?route=<endpoint>
 
 ---
 
-## 🗃️ MongoDB Schema
+## ️ MongoDB Schema
 
 ### `restaurants` collection
 
@@ -377,7 +377,7 @@ http://localhost/food_tracking_system/public/api.php?route=<endpoint>
 
 ---
 
-## ⚡ Redis Key Schema
+##  Redis Key Schema
 
 > Redis is **optional**. If it's not running, the app falls back gracefully.
 
@@ -391,7 +391,7 @@ http://localhost/food_tracking_system/public/api.php?route=<endpoint>
 
 ---
 
-## 🔄 Order Lifecycle
+##  Order Lifecycle
 
 ```
 placed ──► accepted ──► preparing ──► out_for_delivery ──► delivered
@@ -410,7 +410,7 @@ placed ──► accepted ──► preparing ──► out_for_delivery ──�
 
 ---
 
-## 📊 Aggregation Queries
+##  Aggregation Queries
 
 | Query | Method | Description |
 |-------|--------|-------------|
@@ -421,25 +421,25 @@ placed ──► accepted ──► preparing ──► out_for_delivery ──�
 
 ---
 
-## 🎨 Features
+##  Features
 
 | Feature | Details |
 |---------|---------|
-| 🌙 Dark UI | Inter font, glassmorphism cards, gradient accents |
-| 🛒 Cart | Persistent `localStorage` cart with quantity controls |
-| 📦 Orders | Real-time status tracker with 10-second polling |
-| 🏪 Restaurant Dashboard | Cover photo upload, menu CRUD with item images, order management |
-| 📷 Image Upload | Drag-and-drop or click-to-upload (JPG/PNG/WebP/GIF, max 5 MB) |
-| 🔒 Auth | Three separate login types: User, Restaurant, Admin |
-| ⭐ Reviews | Rating + comment system with running average |
-| 📊 Admin Panel | Analytics: revenue, top items, delivery times, user counts |
-| 🚦 Rate Limiting | Max 5 orders per user per hour (Redis-backed) |
-| ❤️ Failover | Full graceful degradation when Redis is unavailable |
-| 📱 Responsive | Mobile-friendly layout |
+|  Dark UI | Inter font, glassmorphism cards, gradient accents |
+|  Cart | Persistent `localStorage` cart with quantity controls |
+|  Orders | Real-time status tracker with 10-second polling |
+|  Restaurant Dashboard | Cover photo upload, menu CRUD with item images, order management |
+|  Image Upload | Drag-and-drop or click-to-upload (JPG/PNG/WebP/GIF, max 5 MB) |
+|  Auth | Three separate login types: User, Restaurant, Admin |
+|  Reviews | Rating + comment system with running average |
+|  Admin Panel | Analytics: revenue, top items, delivery times, user counts |
+|  Rate Limiting | Max 5 orders per user per hour (Redis-backed) |
+| ️ Failover | Full graceful degradation when Redis is unavailable |
+|  Responsive | Mobile-friendly layout |
 
 ---
 
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 ### "Call to undefined function MongoDB\Driver\..."
 The `mongodb` PHP extension is not loaded.  
@@ -472,6 +472,6 @@ php composer.phar install
 
 ---
 
-## 📄 License
+##  License
 
 MIT — free to use for academic and personal projects.

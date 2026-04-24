@@ -24,7 +24,7 @@ require_once ROOT_DIR . '/views/partials/header.php';
 ?>
 <main>
 <div class="form-card">
-  <h2>👋 Welcome back</h2>
+  <h2> Welcome back</h2>
   <p class="sub">Sign in to order your favourite food</p>
 
   <?php if ($error): ?>

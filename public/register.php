@@ -21,7 +21,7 @@ require_once ROOT_DIR . '/views/partials/header.php';
 ?>
 <main>
 <div class="form-card">
-  <h2>🚀 Create account</h2>
+  <h2> Create account</h2>
   <p class="sub">Join thousands ordering with FoodRush</p>
 
   <?php if ($success): ?><div style="background:rgba(0,184,148,.15);color:#00b894;padding:.75rem 1rem;border-radius:8px;margin-bottom:1rem"><?= $success ?></div><?php endif; ?>

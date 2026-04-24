@@ -19,7 +19,7 @@ require_once ROOT_DIR . '/views/partials/header.php';
 ?>
 <main>
 <div class="form-card" style="max-width:560px">
-  <h2>🏪 Register Restaurant</h2>
+  <h2> Register Restaurant</h2>
   <p class="sub">List your restaurant on FoodRush</p>
 
   <form method="POST" novalidate>

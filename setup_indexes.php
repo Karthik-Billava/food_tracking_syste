@@ -73,9 +73,9 @@ $reviews->createIndex(
 $created[] = 'reviews.restaurant_id + user_id (unique — one review per user)';
 
 // ── Done ─────────────────────────────────────────────────────────────────────
-echo "\n✅ MongoDB indexes created:\n\n";
+echo "\n MongoDB indexes created:\n\n";
 foreach ($created as $idx) {
     echo "   • {$idx}\n";
 }
-echo "\n🚀 Done! Queries are now significantly faster.\n\n";
+echo "\n Done! Queries are now significantly faster.\n\n";
 echo "Note: You can delete this file after running it.\n";
